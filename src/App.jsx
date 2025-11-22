@@ -44,7 +44,7 @@ const Portfolio = () => {
     { name: "Orelith Dev Agency", description: "A full-service development agency delivering websites, mobile apps, and digital solutions with clean design and scalable technology.", image: "/orelithdev.png", link: "https://www.orelithdev.xyz" },
     { name: "Lock-Note Landing Page", description: "High-converting landing page with modern animations and responsive design.", image: "/locknote.png", link: "https://lock-note-three.vercel.app/" },
     { name: "Ares Real Estate site", description: "A modern real estate website showcasing property listings with a sleek, responsive design and smooth user experience.", image: "/real-estate.png", link: "https://ares-estate.vercel.app/" },
-    { name: "Blockr Lab Multi-page Website", description: "A creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.", image: "/orelithdev.png", link: "https://www.blockrlab.xyz" }
+    { name: "Blockr Lab Multi-page Website", description: "A creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.", image: "/blockrlab.png", link: "https://www.blockrlab.xyz" }
   ];
 
   const experiences = [
