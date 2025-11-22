@@ -316,16 +316,16 @@ const Portfolio = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center gap-8">
             <div className="flex justify-center gap-5">
-              <a href="#linkedin-link" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
+              <a href="https://www.linkedin.com/in/emmanuelnnanna" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
                 <Linkedin size={22} />
               </a>
-              <a href="#x-twitter-link" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
+              <a href="https://x.com/officialemnn?t=2b24wm14QW_m8nbe3o3tPg&s=09" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
                 <XIcon />
               </a>
-              <a href="#instagram-link" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
+              <a href="https://www.instagram.com/officialemnn?igsh=dXQ4cDcxa2VoNHRk" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
                 <Instagram size={22} />
               </a>
-              <a href="#threads-link" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
+              <a href="https://www.threads.com/@officialemnn" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-[#2563eb]/50 transition-all duration-300 transform hover:scale-110">
                 <ThreadsIcon />
               </a>
             </div>
