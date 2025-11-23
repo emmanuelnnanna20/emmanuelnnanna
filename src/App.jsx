@@ -143,10 +143,10 @@ const Portfolio = () => {
           <p className="text-2xl sm:text-3xl text-gray-400 mb-4 font-light">Product Engineer & Founder</p>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Building digital products that help people focus, grow, and take control of their lives.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
-            <a href="#blockr-labs-website" target="_blank" rel="noopener noreferrer" className="group bg-gradient-to-r from-[#2563eb] to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-[#2563eb]/50 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
+            <a href="https://www.blockrlab.xyz" target="_blank" rel="noopener noreferrer" className="group bg-gradient-to-r from-[#2563eb] to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-[#2563eb]/50 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
               Blockr Labs <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#orelith-dev-website" target="_blank" rel="noopener noreferrer" className="bg-white/5 backdrop-blur-sm border border-white/10 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
+            <a href="https://www.orelithdev.xyz" target="_blank" rel="noopener noreferrer" className="bg-white/5 backdrop-blur-sm border border-white/10 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/10 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
               Orelith Dev <ArrowRight className="w-5 h-5" />
             </a>
           </div>
@@ -184,7 +184,7 @@ const Portfolio = () => {
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>I'm a Product Engineer and multi-product founder from Nigeria, obsessed with building digital tools that help people live better and focus deeper.</p>
               <p>My journey started from personal struggle with distraction and unhealthy habits. That transformation became the foundation for everything I build today.</p>
-              <p>I founded <span className="text-[#2563eb] font-semibold">Blockr Labs</span> to create tools that help people build discipline, overcome addiction, and take charge of their lives—just like I did.</p>
+              <p>I founded <span className="text-[#2563eb] font-semibold">Blockr Labs</span> to create tools that help people build discipline, overcome addiction, and take charge of their lives just like I did.</p>
               <p>I also run <span className="text-purple-400 font-semibold">The Rwired Mind</span>, a community helping people break free from mental loops and patterns that hold them back.</p>
               <p className="text-xl font-semibold text-white pt-4">Mission: Help people regain focus, build discipline, and realize their full potential.</p>
             </div>
@@ -298,7 +298,7 @@ const Portfolio = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-[#2563eb]/20 to-purple-500/20 backdrop-blur-xl border border-white/10 rounded-3xl p-12 md:p-20">
             <h2 className="text-5xl font-black mb-6">Let's Build <span className="bg-gradient-to-r from-[#2563eb] to-purple-500 bg-clip-text text-transparent">Together</span></h2>
-            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Whether you need a product built, want to collaborate, or just want to chat—I'm all ears.</p>
+            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Whether you need a product built, want to collaborate, or just want to chat I'm all ears.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <a href="mailto:your-email@example.com" className="group bg-gradient-to-r from-[#2563eb] to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-[#2563eb]/50 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
                 <Mail className="w-5 h-5" /> Email Me
