@@ -169,7 +169,7 @@ const Portfolio = () => {
   const experiences = [
     { role: "Founder & Lead Product Engineer", company: "Blockr Labs", period: "Oct 2025 - Present", description: "Building productivity tools that help people focus, build discipline, and take control of their lives.", color: "from-purple-500 to-pink-500" },
     { role: "Co-Founder & Software Engineer", company: "Orelith Dev", period: "Sep 2025 - Present", description: "Development agency building websites, apps, and software solutions for businesses worldwide.", color: "from-blue-500 to-cyan-500" },
-    { role: "Data Engineer & Analyst", company: "Zidepeople", period: "Apr 2024 - Oct 2024", description: "Designed data pipelines, performed analytics, and delivered insights for strategic business decisions.", color: "from-green-500 to-emerald-500" },
+    { role: "Data Engineer & Analyst", company: "Zidepeople", period: "Apr 2025 - Oct 2025", description: "Designed data pipelines, performed analytics, and delivered insights for strategic business decisions.", color: "from-green-500 to-emerald-500" },
     { role: "Data & Software Engineer", company: "Yqueue", period: "Sep 2024 - Apr 2025", description: "Developed data solutions and software systems to optimize operations and improve efficiency.", color: "from-orange-500 to-red-500" }
   ];
 
