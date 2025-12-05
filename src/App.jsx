@@ -121,6 +121,17 @@ const Portfolio = () => {
       link: "#"
     },
     { 
+      id: 'blockrlab',
+      name: "Blockr Lab Website", 
+      tagline: "Product Studio Site", 
+      description: "Multi-page website showcasing Blockr Labs' suite of productivity tools.", 
+      fullDescription: "The official website for Blockr Labs—a creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.",
+      image: "/blockrlab.png", 
+      color: "from-purple-500 to-pink-500",
+      type: "web",
+      link: "https://www.blockrlab.xyz"
+    },
+    { 
       id: 'orelithdev',
       name: "Orelith Dev Website", 
       tagline: "Development Agency Site", 
@@ -131,7 +142,7 @@ const Portfolio = () => {
       type: "web",
       link: "https://www.orelithdev.xyz"
     },
-    { 
+    {
       id: 'locknote-landing',
       name: "Lock-Note Landing Page", 
       tagline: "Product Landing Page", 
@@ -142,28 +153,17 @@ const Portfolio = () => {
       type: "web",
       link: "https://lock-note-three.vercel.app/"
     },
-    { 
-      id: 'ares-estate',
-      name: "Ares Real Estate", 
-      tagline: "Property Listings Platform", 
-      description: "Modern real estate website showcasing property listings with sleek design.", 
-      fullDescription: "A comprehensive real estate platform featuring property listings, search functionality, and a smooth user experience built with modern web technologies.",
-      image: "/real-estate.png", 
+    {
+      id: 'Vote Secure',
+      name: "Vote Secure", 
+      tagline: "Secure Online Voting & Polling System", 
+      description: "A full-stack fraud-proof voting platform with anonymous and secured modes, real-time results, and zero running cost.", 
+      fullDescription: "VoteSecure is a production-grade online voting and polling platform I built to eliminate electoral fraud while keeping things simple, fast, and completely free to run.",
+      image: "/votesecure.png", 
       color: "from-cyan-500 to-blue-500",
-      type: "web",
-      link: "https://ares-estate.vercel.app/"
+      type: "web app",
+      link: "https://voting-system-frontend-three.vercel.app/"
     },
-    { 
-      id: 'blockrlab',
-      name: "Blockr Lab Website", 
-      tagline: "Product Studio Site", 
-      description: "Multi-page website showcasing Blockr Labs' suite of productivity tools.", 
-      fullDescription: "The official website for Blockr Labs—a creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.",
-      image: "/blockrlab.png", 
-      color: "from-purple-500 to-pink-500",
-      type: "web",
-      link: "https://www.blockrlab.xyz"
-    }
   ];
 
   const experiences = [
