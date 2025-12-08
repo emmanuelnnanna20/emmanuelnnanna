@@ -81,7 +81,7 @@ const Portfolio = () => {
       image: "/bllogo.png", 
       color: "from-purple-500 to-pink-500",
       type: "mobile",
-      link: "https://blockrapp.com"
+      link: "https://play.google.com/store/apps/details?id=com.orelithdev.blockr"
     },
     { 
       id: 'locknote',
@@ -92,7 +92,7 @@ const Portfolio = () => {
       image: "/locknote_logo.png", 
       color: "from-green-500 to-emerald-500",
       type: "mobile",
-      link: "https://locknoteapp.com"
+      link: "https://play.google.com/store/apps/details?id=com.orelithdev.locknoteapp"
     },
     { 
       id: 'yqueue',
@@ -118,7 +118,7 @@ const Portfolio = () => {
       image: "/deadlineheat.png", 
       color: "from-orange-500 to-red-500",
       type: "mobile",
-      link: "#"
+      link: "https://play.google.com/store/apps/details?id=com.blockrlabs.deaadlineheat"
     },
     { 
       id: 'blockrlab',
@@ -128,7 +128,7 @@ const Portfolio = () => {
       fullDescription: "The official website for Blockr Labs—a creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.",
       image: "/blockrlab.png", 
       color: "from-purple-500 to-pink-500",
-      type: "web",
+      type: "website",
       link: "https://www.blockrlab.xyz"
     },
     { 
@@ -141,6 +141,17 @@ const Portfolio = () => {
       color: "from-blue-500 to-cyan-500",
       type: "web",
       link: "https://www.orelithdev.xyz"
+    },
+    { 
+      id: 'mindnest',
+      name: "MindNest", 
+      tagline: "AI Study and community learning platform", 
+      description: "Mindnest powers the full learning lifecycle, using AI to help students, educators, and institutions close performance gaps and unlock world-class education at scale", 
+      fullDescription: "Students often struggle with traditional study tools that lack personalization and motivation, leading to reduced engagement and ineffective learning. MindnestAI leverages AI to deliver personalized study recommendations, spaced repetition, and motivational prompts. Users have reported enhanced focus and improved retention, transforming study routines into tailored and productive experiences.",
+      image: "/mindnest.png", 
+      color: "from-purple-500 to-green-500",
+      type: "mobile app, web app",
+      link: "https://www.usemindnest.xyz"
     },
     {
       id: 'locknote-landing',
