@@ -285,7 +285,7 @@ const Portfolio = () => {
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#2563eb] transition-opacity duration-300 ${activeSection === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
               </button>
             ))}
-            <a href="#resume-link" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+            <a href="https://drive.google.com/file/d/19yVtCb10O6bC4Ar1dQMqNtqpvWJl08Te/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
               <FileText className="w-4 h-4" /> Resume
             </a>
           </div>
