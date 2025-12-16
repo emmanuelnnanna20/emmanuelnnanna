@@ -72,35 +72,35 @@ const Portfolio = () => {
   };
 
   const featuredProjects = [
-    { 
+    {
       id: 'blockr',
-      name: "Blockr", 
-      tagline: "Time-Blocking & Productivity", 
-      description: "Structure your day with time blocks, track progress, and stay accountable with visual dashboards and goal tracking.", 
+      name: "Blockr",
+      tagline: "Time-Blocking & Productivity",
+      description: "Structure your day with time blocks, track progress, and stay accountable with visual dashboards and goal tracking.",
       fullDescription: "Blockr is a comprehensive time-blocking and task-scheduling app designed to help you structure your day effectively. Set tasks, assign them to specific time blocks, create goal lists with timelines, and monitor your daily activity with intuitive visual dashboards. Built with Flutter for smooth cross-platform performance.",
-      image: "/bllogo.png", 
+      image: "/bllogo.png",
       color: "from-purple-500 to-pink-500",
       type: "mobile",
       link: "https://play.google.com/store/apps/details?id=com.orelithdev.blockr"
     },
-    { 
+    {
       id: 'locknote',
-      name: "Lock-Note", 
-      tagline: "Secure Password Vault", 
-      description: "Save passwords, login credentials, and generate strong passwords in a simple, secure vault.", 
+      name: "Lock-Note",
+      tagline: "Secure Password Vault",
+      description: "Save passwords, login credentials, and generate strong passwords in a simple, secure vault.",
       fullDescription: "Lock-Note is your personal password manager and secure vault. Store all your passwords, login credentials, and sensitive information in one encrypted place. Features include strong password generation, secure storage, and easy retrieval—all with a clean, minimal interface.",
-      image: "/locknote_logo.png", 
+      image: "/locknote_logo.png",
       color: "from-green-500 to-emerald-500",
       type: "mobile",
       link: "https://play.google.com/store/apps/details?id=com.orelithdev.locknoteapp"
     },
-    { 
+    {
       id: 'yqueue',
-      name: "Y-Queue", 
-      tagline: "Food Delivery & Kitchen SaaS", 
-      description: "Next-gen platform for virtual kitchens combining delivery with tools for inventory, payments, and growth.", 
+      name: "Y-Queue",
+      tagline: "Food Delivery & Kitchen SaaS",
+      description: "Next-gen platform for virtual kitchens combining delivery with tools for inventory, payments, and growth.",
       fullDescription: "Y-Queue is a comprehensive platform for virtual kitchens and restaurants. It combines a seamless delivery experience with powerful backend tools for inventory management, payment processing, and business growth analytics. Over 25,000 meals delivered and 55+ restaurants onboarded since 2023.",
-      image: "/yqueue.png", 
+      image: "/yqueue.png",
       color: "from-orange-500 to-yellow-500",
       type: "web",
       link: "https://www.y-queue.com"
@@ -109,68 +109,68 @@ const Portfolio = () => {
 
   const allProjects = [
     ...featuredProjects,
-    { 
+    {
       id: 'deadlineheat',
-      name: "DeadlineHeat", 
-      tagline: "Visual Countdown Timers", 
-      description: "Color-changing countdown timers that create visual urgency as deadlines approach.", 
+      name: "DeadlineHeat",
+      tagline: "Visual Countdown Timers",
+      description: "Color-changing countdown timers that create visual urgency as deadlines approach.",
       fullDescription: "DeadlineHeat transforms how you perceive deadlines. Watch your countdown timer change colors as time runs out—creating visual urgency that keeps you aware, focused, and intentional about your time. Perfect for students, professionals, and anyone who wants to make deadlines feel real.",
-      image: "/deadlineheat.png", 
+      image: "/deadlineheat.png",
       color: "from-orange-500 to-red-500",
       type: "mobile",
       link: "https://play.google.com/store/apps/details?id=com.blockrlabs.deaadlineheat"
     },
-    { 
+    {
       id: 'blockrlab',
-      name: "Blockr Lab Website", 
-      tagline: "Product Studio Site", 
-      description: "Multi-page website showcasing Blockr Labs' suite of productivity tools.", 
+      name: "Blockr Lab Website",
+      tagline: "Product Studio Site",
+      description: "Multi-page website showcasing Blockr Labs' suite of productivity tools.",
       fullDescription: "The official website for Blockr Labs—a creative workspace where we build simple, powerful tools designed to help people stay organized, productive, and focused.",
-      image: "/blockrlab.png", 
+      image: "/blockrlab.png",
       color: "from-purple-500 to-pink-500",
       type: "website",
       link: "https://www.blockrlab.xyz"
     },
-    { 
+    {
       id: 'orelithdev',
-      name: "Orelith Dev Website", 
-      tagline: "Development Agency Site", 
-      description: "Full-service development agency delivering websites, mobile apps, and digital solutions.", 
+      name: "Orelith Dev Website",
+      tagline: "Development Agency Site",
+      description: "Full-service development agency delivering websites, mobile apps, and digital solutions.",
       fullDescription: "The official website for Orelith Development showcasing our services, portfolio, and expertise in building digital products for businesses worldwide.",
-      image: "/orelithdev.png", 
+      image: "/orelithdev.png",
       color: "from-blue-500 to-cyan-500",
       type: "web",
       link: "https://www.orelithdev.xyz"
     },
-    { 
+    {
       id: 'mindnest',
-      name: "MindNest", 
-      tagline: "AI Study and community learning platform", 
-      description: "Mindnest powers the full learning lifecycle, using AI to help students, educators, and institutions close performance gaps and unlock world-class education at scale", 
+      name: "MindNest",
+      tagline: "AI Study and community learning platform",
+      description: "Mindnest powers the full learning lifecycle, using AI to help students, educators, and institutions close performance gaps and unlock world-class education at scale",
       fullDescription: "Students often struggle with traditional study tools that lack personalization and motivation, leading to reduced engagement and ineffective learning. MindnestAI leverages AI to deliver personalized study recommendations, spaced repetition, and motivational prompts. Users have reported enhanced focus and improved retention, transforming study routines into tailored and productive experiences.",
-      image: "/mindnest.png", 
+      image: "/mindnest.png",
       color: "from-purple-500 to-green-500",
       type: "mobile app, web app",
       link: "https://www.usemindnest.xyz"
     },
     {
       id: 'locknote-landing',
-      name: "Lock-Note Landing Page", 
-      tagline: "Product Landing Page", 
-      description: "High-converting landing page with modern animations and responsive design.", 
+      name: "Lock-Note Landing Page",
+      tagline: "Product Landing Page",
+      description: "High-converting landing page with modern animations and responsive design.",
       fullDescription: "A beautifully designed landing page for Lock-Note featuring modern animations, responsive design, and conversion-optimized layout.",
-      image: "/locknote.png", 
+      image: "/locknote.png",
       color: "from-green-500 to-teal-500",
       type: "web",
       link: "https://lock-note-three.vercel.app/"
     },
     {
       id: 'Vote Secure',
-      name: "Vote Secure", 
-      tagline: "Secure Online Voting & Polling System", 
-      description: "A full-stack fraud-proof voting platform with anonymous and secured modes, real-time results, and zero running cost.", 
+      name: "Vote Secure",
+      tagline: "Secure Online Voting & Polling System",
+      description: "A full-stack fraud-proof voting platform with anonymous and secured modes, real-time results, and zero running cost.",
       fullDescription: "VoteSecure is a production-grade online voting and polling platform I built to eliminate electoral fraud while keeping things simple, fast, and completely free to run.",
-      image: "/votesecure.png", 
+      image: "/votesecure.png",
       color: "from-cyan-500 to-blue-500",
       type: "web app",
       link: "https://voting-system-frontend-three.vercel.app/"
@@ -255,13 +255,13 @@ const Portfolio = () => {
 
   const ThreadsIcon = () => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.088-1.146 3.398-1.172 1.07-.02 2.074.166 2.992.493-.054-1.19-.318-2.108-.847-2.728-.608-.713-1.553-1.078-2.81-1.085h-.025c-1.017.007-1.972.332-2.69.916l-1.313-1.607c1.063-.866 2.47-1.33 3.978-1.33h.036c3.138.02 5.028 1.88 5.18 5.096.036.104.07.836.036 1.448.899.498 1.67 1.15 2.27 1.928.876 1.135 1.305 2.603 1.198 4.127-.168 2.382-1.282 4.317-3.13 5.442-1.528.93-3.479 1.402-5.796 1.402zm-.523-8.877c-.947.022-1.77.243-2.313.624-.476.334-.724.778-.698 1.249.053.96.964 1.508 2.278 1.437 1.058-.057 1.873-.456 2.426-1.187.478-.632.765-1.46.857-2.476-.78-.253-1.636-.382-2.543-.362z"/>
+      <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.088-1.146 3.398-1.172 1.07-.02 2.074.166 2.992.493-.054-1.19-.318-2.108-.847-2.728-.608-.713-1.553-1.078-2.81-1.085h-.025c-1.017.007-1.972.332-2.69.916l-1.313-1.607c1.063-.866 2.47-1.33 3.978-1.33h.036c3.138.02 5.028 1.88 5.18 5.096.036.104.07.836.036 1.448.899.498 1.67 1.15 2.27 1.928.876 1.135 1.305 2.603 1.198 4.127-.168 2.382-1.282 4.317-3.13 5.442-1.528.93-3.479 1.402-5.796 1.402zm-.523-8.877c-.947.022-1.77.243-2.313.624-.476.334-.724.778-.698 1.249.053.96.964 1.508 2.278 1.437 1.058-.057 1.873-.456 2.426-1.187.478-.632.765-1.46.857-2.476-.78-.253-1.636-.382-2.543-.362z" />
     </svg>
   );
 
   const XIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
   );
 
@@ -311,7 +311,7 @@ const Portfolio = () => {
           <button onClick={() => { setSelectedProject(null); setCurrentPage('home'); window.scrollTo(0, 0); }} className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors">
             <ArrowRight className="w-5 h-5 rotate-180" /> Back to Home
           </button>
-          
+
           <div className="relative mb-12 rounded-3xl overflow-hidden border border-white/10 bg-white/5">
             <img src={project.image} alt={project.name} className="w-full h-auto object-contain" />
           </div>
@@ -406,10 +406,10 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden" style={{ fontFamily: "'Urbanist', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      
+
       <AnimatedBackground />
       <Navigation />
-      
+
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="max-w-6xl mx-auto text-center relative z-10">
@@ -419,7 +419,7 @@ const Portfolio = () => {
           </div>
           <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-6 leading-tight">
             <span className="block text-white">Emmanuel</span>
-            <span className="block text-[#2563eb]">Nnanna</span>
+            <span className="block text-white">Nnanna</span>
           </h1>
           <p className="text-2xl sm:text-3xl text-gray-400 mb-4 font-light">Flutter Developer & Product Engineer</p>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-12">Building digital products and experiences that solve real problems through simplicity, clarity, and thoughtful engineering.</p>
@@ -451,10 +451,10 @@ const Portfolio = () => {
           </div>
           <div>
             <span className="text-[#2563eb] text-sm font-semibold uppercase tracking-wider">About Me</span>
-            <h2 className="text-5xl font-black mt-2 mb-6 leading-tight">Building <span className="text-[#2563eb]">Simple, Useful</span> Technology</h2>
+            <h2 className="text-5xl font-black mt-2 mb-6 leading-tight">Building <span className="text-white">Simple, Useful</span> Technology</h2>
             <div className="space-y-4 text-gray-400 leading-relaxed">
               <p>I'm Emmanuel Nnanna, a product engineer and founder building digital tools that help people stay organized, focused, and in control of their goals. I've led and completed 10+ real-world software projects from mobile apps to full web platforms with a focus on simple interfaces, practical workflows, and products people actually use.</p>
-              <p>I currently run <span className="text-[#2563eb] font-semibold">Blockr Labs</span>, where I create independent productivity products like Blockr, Lock-Note, Flash Save, and Deadline Heat. I also founded <span className="text-[#2563eb] font-semibold">Orelith Development</span>, a software agency that builds custom websites and applications for businesses and founders.</p>
+              <p>I currently run <span className="text-white font-semibold">Blockr Labs</span>, where I create independent productivity products like Blockr, Lock-Note, Flash Save, and Deadline Heat. I also founded <span className="text-white font-semibold">Orelith Development</span>, a software agency that builds custom websites and applications for businesses and founders.</p>
               <p>I specialize in Flutter mobile development, web app development, product engineering, and building systems & productivity tools. I love turning concepts into real, functional products that people actually want to use.</p>
             </div>
           </div>
@@ -463,8 +463,8 @@ const Portfolio = () => {
 
       {/* Gallery Section */}
       <section className="relative py-20 overflow-hidden">
-        <div 
-          className="overflow-x-scroll scrollbar-hide" 
+        <div
+          className="overflow-x-scroll scrollbar-hide"
           ref={galleryRef}
           onMouseDown={handleMouseDown}
           onMouseLeave={handleMouseLeave}
@@ -473,18 +473,18 @@ const Portfolio = () => {
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          style={{ 
+          style={{
             cursor: isDragging ? 'grabbing' : 'grab',
-            scrollBehavior: 'auto' 
+            scrollBehavior: 'auto'
           }}
         >
           <div className="flex space-x-6 py-8">
             {[...galleryImages, ...galleryImages, ...galleryImages].map((img, i) => (
               <div key={i} className="flex-shrink-0 w-80 h-64 rounded-2xl overflow-hidden border border-white/10 bg-white/5">
-                <img 
-                  src={img} 
-                  alt={`Gallery ${i + 1}`} 
-                  className="w-full h-full object-cover object-center bg-black/20 pointer-events-none" 
+                <img
+                  src={img}
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-full object-cover object-center bg-black/20 pointer-events-none"
                 />
               </div>
             ))}
