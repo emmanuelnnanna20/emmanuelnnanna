@@ -179,7 +179,7 @@ const Portfolio = () => {
 
   const experiences = [
     { role: "Founder & Lead Product Engineer", company: "Blockr Labs", period: "Oct 2025 - Present", description: "Building productivity tools that help people focus, build discipline, and take control of their lives.", color: "from-purple-500 to-pink-500" },
-    { role: "Co-Founder & Software Engineer", company: "Orelith Dev", period: "Sep 2025 - Present", description: "Development agency building websites, apps, and software solutions for businesses worldwide.", color: "from-blue-500 to-cyan-500" },
+    { role: "Founder & Software Engineer", company: "Orelith Development", period: "Sep 2025 - Present", description: "Development agency building websites, apps, and software solutions for businesses worldwide.", color: "from-blue-500 to-cyan-500" },
     { role: "Data Engineer & Analyst", company: "Zidepeople", period: "Apr 2025 - Oct 2025", description: "Designed data pipelines, performed analytics, and delivered insights for strategic business decisions.", color: "from-green-500 to-emerald-500" },
     { role: "Data & Software Engineer", company: "Yqueue", period: "Sep 2024 - Apr 2025", description: "Developed data solutions and software systems to optimize operations and improve efficiency.", color: "from-orange-500 to-red-500" }
   ];
@@ -573,7 +573,7 @@ const Portfolio = () => {
             <h2 className="text-5xl font-black mb-6">Let's Build <span className="text-[#2563eb]">Together</span></h2>
             <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">Whether you need a product built, want to collaborate, or just want to chat I'm all ears.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <a href="mailto:your-email@example.com" className="group bg-[#2563eb] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-[#2563eb]/50 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
+              <a href="mailto:emmanuelnnanna.en@gmail.com" className="group bg-[#2563eb] text-white px-8 py-4 rounded-xl font-semibold hover:shadow-2xl hover:shadow-[#2563eb]/50 transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105">
                 <Mail className="w-5 h-5" /> Email Me
               </a>
             </div>
