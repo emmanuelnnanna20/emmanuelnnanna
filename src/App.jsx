@@ -359,7 +359,7 @@ const ProjectDetailPage = ({ project, setSelectedProject, setCurrentPage }) => {
       {/* ═══════════════════════════════════════════════════ */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
         <div className="py-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="text-[9px] font-black tracking-[0.5em] text-white/10 uppercase">EN_PORTFOLIO_2025</span>
+          <span className="text-[9px] font-black tracking-[0.5em] text-white/10 uppercase">EN_PORTFOLIO_2026</span>
           <a href={project.link} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-600 hover:text-emerald-500 transition-colors">
             <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Visit Live</span>
             <ExternalLink className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -1037,7 +1037,7 @@ const Portfolio = () => {
             <div className="flex justify-center gap-4">
               {[
                 { icon: <Linkedin size={20} />, link: "https://www.linkedin.com/in/emmanuelnnanna" },
-                { icon: <XIcon />, link: "https://x.com/officialemnn" },
+                { icon: <XIcon />, link: "https://x.com/emmanuelxnnanna" },
                 { icon: <Instagram size={20} />, link: "https://www.instagram.com/emmanuelnnanna.dev/" },
                 { icon: <ThreadsIcon />, link: "https://www.threads.com/@emmanuelnnanna.dev" }
               ].map((social, i) => (
@@ -1053,7 +1053,7 @@ const Portfolio = () => {
               ))}
             </div>
             <div className="text-center space-y-2">
-              <p className="text-gray-500 text-xs font-bold uppercase tracking-[0.3em]">© 2025 Emmanuel Nnanna</p>
+              <p className="text-gray-500 text-xs font-bold uppercase tracking-[0.3em]">© 2026 Emmanuel Nnanna</p>
               <p className="text-gray-600 text-[10px] uppercase tracking-widest font-medium">Engineered for excellence.</p>
             </div>
           </div>
