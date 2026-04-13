@@ -15,19 +15,32 @@ const XIcon = () => (
   </svg>
 );
 
-const ScrollProgress = ({ scrollProgress }) => (
-  <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden lg:flex flex-col items-center gap-4">
-    <div className="w-[2px] h-32 bg-white/5 relative rounded-full overflow-hidden border border-white/5">
-      <div
-        className="absolute top-0 left-0 w-full bg-emerald-500 shadow-[0_0_10px_#10b981] transition-all duration-150 ease-out"
-        style={{ height: `${scrollProgress}%` }}
-      />
+const ScrollProgress = React.forwardRef((props, ref) => {
+  const barRef = React.useRef(null);
+  const textRef = React.useRef(null);
+
+  React.useImperativeHandle(ref, () => ({
+    update: (progress) => {
+      if (barRef.current) barRef.current.style.height = `${progress}%`;
+      if (textRef.current) textRef.current.textContent = `${Math.round(progress)}%`;
+    }
+  }));
+
+  return (
+    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[60] hidden lg:flex flex-col items-center gap-4">
+      <div className="w-[2px] h-32 bg-white/5 relative rounded-full overflow-hidden border border-white/5">
+        <div
+          ref={barRef}
+          className="absolute top-0 left-0 w-full bg-emerald-500 shadow-[0_0_10px_#10b981]"
+          style={{ height: '0%' }}
+        />
+      </div>
+      <span ref={textRef} className="text-[10px] font-bold text-emerald-500/50 vertical-text tracking-widest uppercase py-2">
+        0%
+      </span>
     </div>
-    <span className="text-[10px] font-bold text-emerald-500/50 vertical-text tracking-widest uppercase py-2">
-      {Math.round(scrollProgress)}%
-    </span>
-  </div>
-);
+  );
+});
 
 const AnimatedBackground = ({ mousePosition }) => (
   <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
@@ -359,33 +372,119 @@ const ProjectDetailPage = ({ project, setSelectedProject, setCurrentPage }) => {
 
 const AllProjectsPage = ({ allProjects, setCurrentPage, setSelectedProject }) => {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-32 pb-20 px-4 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <button onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }} className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors">
-          <ArrowRight className="w-5 h-5 rotate-180" /> Back to Home
+    <div className="min-h-screen bg-[#030303] text-white relative overflow-hidden">
+      {/* Background Grid + Ambient */}
+      <div className="absolute inset-0 bg-grid opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/8 rounded-full blur-[200px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-28 pb-24">
+        {/* Back Button */}
+        <button
+          onClick={() => { setCurrentPage('home'); window.scrollTo(0, 0); }}
+          className="group flex items-center gap-2.5 px-5 py-3 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-full text-gray-400 hover:text-emerald-400 hover:border-emerald-500/40 transition-all duration-300 mb-16"
+        >
+          <ArrowRight className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-1" />
+          <span className="text-[10px] font-black uppercase tracking-[0.25em]">Back</span>
         </button>
-        <div className="text-center mb-24">
-          <h1 className="text-[60px] sm:text-[120px] lg:text-[150px] font-black tracking-tighter leading-[0.8] uppercase opacity-90 text-white select-none text-center mb-16" style={{ fontFamily: "'Permanent Marker', cursive" }}>All <span className="text-gradient-emerald">Projects</span></h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">A collection of my recent apps, internal tools, and creative experiments.</p>
+
+        {/* Page Header */}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_12px_#10b981] animate-pulse" />
+            <span className="text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500">Archive</span>
+            <div className="w-16 h-[1px] bg-emerald-500/20" />
+            <span className="text-[10px] font-mono text-gray-600">{allProjects.length} Projects</span>
+          </div>
+          <h1
+            className="text-[50px] sm:text-[80px] lg:text-[110px] font-black tracking-tighter leading-[0.85] uppercase text-white select-none"
+            style={{ fontFamily: "'Permanent Marker', cursive" }}
+          >
+            All <span className="text-gradient-emerald">Projects</span>
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl font-light mt-6 leading-relaxed">
+            A curated collection of shipped products, creative experiments, and engineering solutions.
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        {/* Projects List — Magazine Layout */}
+        <div className="space-y-6">
           {allProjects.map((project, i) => (
-            <div key={i} onClick={() => { setSelectedProject(project); setCurrentPage('project'); window.scrollTo(0, 0); }} className="group cursor-pointer relative bg-[#030303] border border-white/5 rounded-3xl overflow-hidden hover:border-emerald-500/30 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="absolute top-4 right-4 z-10 opacity-20 group-hover:opacity-100 transition-opacity">
-                 <div className="text-[10px] font-mono text-emerald-500 uppercase tracking-tighter" style={{ fontFamily: "'Permanent Marker', cursive" }}>{project.type}</div>
+            <div
+              key={i}
+              onClick={() => { setSelectedProject(project); setCurrentPage('project'); window.scrollTo(0, 0); }}
+              className={`group cursor-pointer relative rounded-[2rem] overflow-hidden border border-white/[0.06] hover:border-emerald-500/30 transition-all duration-700 ${
+                i === 0 ? 'h-[500px] sm:h-[600px]' : 'h-[300px] sm:h-[400px]'
+              }`}
+            >
+              {/* Full-bleed Image */}
+              <img
+                src={project.image}
+                alt={project.name}
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+              />
+
+              {/* Gradient Overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#030303]/30 to-transparent" />
+
+              {/* Floating Index Number */}
+              <div className="absolute top-6 right-6 sm:top-8 sm:right-8 z-10">
+                <span
+                  className="text-[60px] sm:text-[80px] font-black text-white/[0.04] group-hover:text-emerald-500/10 leading-none select-none transition-colors duration-700"
+                  style={{ fontFamily: "'Permanent Marker', cursive" }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
               </div>
-              <div className="relative h-56 overflow-hidden">
-                <img src={project.image} alt={project.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030303] to-transparent opacity-60" />
-              </div>
-              <div className="p-8 border-t border-white/5">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors uppercase tracking-tight">{project.name}</h3>
-                  <span className="text-[8px] font-mono text-gray-600">MOD_{i+100}</span>
+
+              {/* Type Badge */}
+              <div className="absolute top-6 left-6 sm:top-8 sm:left-8 z-10">
+                <div className="px-4 py-2 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_#10b981]" />
+                  <span className="text-[9px] font-black uppercase tracking-[0.3em] text-gray-300">{project.type}</span>
                 </div>
-                <p className="text-gray-400 mb-8 leading-relaxed text-sm line-clamp-3">{project.description}</p>
-                <div className="flex items-center gap-2 text-emerald-500 font-bold text-[10px] uppercase tracking-[0.2em] transition-all">See More <ArrowRight className="w-3 h-3 group-hover:translate-x-1" /></div>
               </div>
+
+              {/* Bottom Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 z-10">
+                <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
+                  <div className="space-y-3">
+                    {/* Tech Pills */}
+                    {project.techStack && (
+                      <div className="flex flex-wrap gap-2 mb-1">
+                        {project.techStack.slice(0, 3).map((tech) => (
+                          <span key={tech} className="px-3 py-1 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[8px] font-bold text-gray-400 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all duration-500">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <h2
+                      className={`font-black tracking-tighter uppercase text-white group-hover:text-emerald-400 transition-colors duration-500 leading-[0.9] ${
+                        i === 0 ? 'text-4xl sm:text-5xl lg:text-6xl' : 'text-3xl sm:text-4xl'
+                      }`}
+                      style={{ fontFamily: "'Permanent Marker', cursive" }}
+                    >
+                      {project.name}
+                    </h2>
+                    <p className="text-gray-400 text-sm sm:text-base font-light max-w-xl line-clamp-2 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center gap-3 text-emerald-500 font-bold text-[10px] uppercase tracking-[0.25em] whitespace-nowrap group-hover:translate-x-2 transition-transform duration-500 shrink-0">
+                    <span>View Project</span>
+                    <div className="w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-black transition-all duration-500">
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative corner accents */}
+              <div className="absolute top-0 left-0 w-20 h-20 border-t border-l border-white/[0.04] rounded-tl-[2rem] pointer-events-none group-hover:border-emerald-500/20 transition-colors duration-700" />
+              <div className="absolute bottom-0 right-0 w-20 h-20 border-b border-r border-white/[0.04] rounded-br-[2rem] pointer-events-none group-hover:border-emerald-500/20 transition-colors duration-700" />
             </div>
           ))}
         </div>
@@ -401,9 +500,8 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const lenisRef = useRef(null);
+  const scrollProgressRef = useRef(null);
 
   useEffect(() => {
     // Smoooth Scrolling (Lenis)
@@ -423,6 +521,13 @@ const Portfolio = () => {
 
     function raf(time) {
       lenis.raf(time);
+      // Update scroll progress directly in the animation frame for instant response
+      const currentScrollPos = window.pageYOffset || window.scrollY;
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? (currentScrollPos / totalHeight) * 100 : 0;
+      if (scrollProgressRef.current) {
+        scrollProgressRef.current.update(progress);
+      }
       requestAnimationFrame(raf);
     }
 
@@ -430,9 +535,6 @@ const Portfolio = () => {
 
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (currentScrollPos / totalHeight) * 100;
-      setScrollProgress(progress);
 
       if (currentPage !== 'home') return;
 
@@ -578,6 +680,7 @@ const Portfolio = () => {
       <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden" style={{ fontFamily: "'Urbanist', sans-serif" }}>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
         <AnimatedBackground mousePosition={mousePosition} />
+        <ScrollProgress ref={scrollProgressRef} />
         <Navigation navItems={navItems} activeSection={activeSection} scrollTo={scrollTo} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <AllProjectsPage allProjects={allProjects} setCurrentPage={setCurrentPage} setSelectedProject={setSelectedProject} />
       </div>
@@ -589,6 +692,7 @@ const Portfolio = () => {
       <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden" style={{ fontFamily: "'Urbanist', sans-serif" }}>
         <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
         <AnimatedBackground mousePosition={mousePosition} />
+        <ScrollProgress ref={scrollProgressRef} />
         <Navigation navItems={navItems} activeSection={activeSection} scrollTo={scrollTo} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <ProjectDetailPage project={selectedProject} setSelectedProject={setSelectedProject} setCurrentPage={setCurrentPage} />
       </div>
@@ -600,7 +704,7 @@ const Portfolio = () => {
     <div className="min-h-screen bg-[#030303] text-white overflow-hidden bg-grid bg-fixed" style={{ fontFamily: "'Urbanist', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
 
-      <ScrollProgress scrollProgress={scrollProgress} />
+      <ScrollProgress ref={scrollProgressRef} />
       <AnimatedBackground mousePosition={mousePosition} />
       <Navigation navItems={navItems} activeSection={activeSection} scrollTo={scrollTo} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 
