@@ -102,143 +102,255 @@ const Navigation = ({ navItems, activeSection, scrollTo, isMenuOpen, setIsMenuOp
 
 const ProjectDetailPage = ({ project, setSelectedProject, setCurrentPage }) => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [isImageLoaded, setIsImageLoaded] = React.useState(false);
   if (!project) return null;
 
   const nextSlide = () => {
+    setIsImageLoaded(false);
     setCurrentSlide((prev) => (prev + 1) % project.slides.length);
   };
 
   const prevSlide = () => {
+    setIsImageLoaded(false);
     setCurrentSlide((prev) => (prev - 1 + project.slides.length) % project.slides.length);
   };
+
   return (
-    <div className="min-h-screen bg-[#030303] text-white pt-24 pb-20 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-grid opacity-20 pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <button onClick={() => { setSelectedProject(null); setCurrentPage('home'); window.scrollTo(0, 0); }} className="group flex items-center gap-3 text-gray-500 hover:text-emerald-400 mb-12 transition-all duration-300">
-          <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-emerald-500/50 group-hover:bg-emerald-500/10">
-            <ArrowRight className="w-5 h-5 rotate-180" />
-          </div>
-          <span className="text-xs font-bold uppercase tracking-widest">Return to Base</span>
+    <div className="min-h-screen bg-[#030303] text-white relative overflow-hidden">
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* SECTION 1: CINEMATIC HERO — Full-bleed image with overlay */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <div className="relative w-full h-[70vh] sm:h-[80vh] overflow-hidden">
+        {/* Hero Image */}
+        <img
+          src={project.slides[0]}
+          alt={project.name}
+          className="absolute inset-0 w-full h-full object-cover scale-105"
+        />
+        {/* Cinematic Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-[#030303]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#030303]/40 to-transparent" />
+        <div className="absolute inset-0 bg-[#030303]/20" />
+
+        {/* Back Button — Top Left */}
+        <button
+          onClick={() => { setSelectedProject(null); setCurrentPage('home'); window.scrollTo(0, 0); }}
+          className="absolute top-8 left-6 sm:left-10 z-30 group flex items-center gap-2.5 px-5 py-3 bg-black/40 backdrop-blur-2xl border border-white/10 rounded-full text-gray-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-all duration-300"
+        >
+          <ArrowRight className="w-4 h-4 rotate-180 transition-transform group-hover:-translate-x-1" />
+          <span className="text-[10px] font-black uppercase tracking-[0.25em]">Back</span>
         </button>
 
-        <div className="grid lg:grid-cols-2 gap-16 mb-20 items-end">
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <span className="text-gray-600 font-mono text-[10px]">ID_{String(project.id || "").slice(0, 8) || "ARCH_01"}</span>
+        {/* Hero Content — Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 px-6 sm:px-10 lg:px-16 pb-12 sm:pb-16">
+          <div className="max-w-6xl mx-auto">
+            {/* Type Badge */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_12px_#10b981] animate-pulse" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400">{project.type}</span>
+              <div className="w-12 h-[1px] bg-emerald-500/30" />
+              <span className="text-[10px] font-mono text-gray-500 uppercase">Live</span>
             </div>
-            <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-none" style={{ fontFamily: "'Permanent Marker', cursive" }}>{project.name}</h1>
-            <p className="text-xl sm:text-2xl text-gray-400 font-light max-w-xl">{project.tagline}</p>
-          </div>
-          <div className="flex flex-col gap-8 pb-4">
-            <div className="grid grid-cols-2 gap-8 border-l border-white/10 pl-8">
-              <div>
-                <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-500/50 mb-1">Architecture</div>
-                <div className="text-white font-bold uppercase text-xs tracking-wider">{project.type}</div>
-              </div>
-              <div>
-                <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-500/50 mb-1">Status</div>
-                <div className="text-white font-bold uppercase text-xs tracking-wider">Operational</div>
-              </div>
+
+            {/* Project Name */}
+            <h1
+              className="text-[42px] sm:text-[72px] lg:text-[96px] font-black tracking-tighter leading-[0.85] uppercase text-white select-none"
+              style={{ fontFamily: "'Permanent Marker', cursive" }}
+            >
+              {project.name}
+            </h1>
+
+            {/* Tagline */}
+            <p className="text-lg sm:text-xl text-gray-300 font-light max-w-2xl mt-4 leading-relaxed">
+              {project.tagline}
+            </p>
+
+            {/* Action Row */}
+            <div className="flex flex-wrap items-center gap-4 mt-8">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-emerald-500 text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all hover:bg-emerald-400 hover:scale-105 active:scale-95 shadow-[0_15px_40px_rgba(16,185,129,0.25)] whitespace-nowrap"
+              >
+                Open Project
+                <ExternalLink className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
+              {project.techStack && (
+                <div className="hidden sm:flex items-center gap-2">
+                  {project.techStack.slice(0, 3).map((tech) => (
+                    <span key={tech} className="px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-[9px] font-bold text-gray-400 uppercase tracking-widest">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="group w-full bg-emerald-500 text-black px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-[0.2em] transition-all duration-500 flex items-center justify-center gap-4 hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.3)] transform hover:-translate-y-1">Open Project <ExternalLink className="w-5 h-5 transition-transform group-hover:translate-x-1" /></a>
           </div>
         </div>
+      </div>
 
-        <div className="space-y-20">
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* SECTION 2: BENTO GRID OVERVIEW */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 -mt-1">
+        {/* Ambient Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/5 rounded-full blur-[150px] pointer-events-none" />
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-16 relative z-10">
+
+          {/* Card: About — Spans 2 columns */}
+          <div className="md:col-span-2 group relative bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 sm:p-10 overflow-hidden hover:border-emerald-500/20 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/5 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-emerald-500" />
+              </div>
+              <h2 className="text-lg font-black uppercase tracking-widest text-emerald-500" style={{ fontFamily: "'Permanent Marker', cursive" }}>About</h2>
+            </div>
+            <p className="text-gray-400 leading-relaxed text-base sm:text-lg font-light">
+              {project.fullDescription || project.description}
+            </p>
+          </div>
+
+          {/* Card: Quick Meta */}
+          <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/20 transition-all duration-500">
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="space-y-6">
+              <div>
+                <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Architecture</span>
+                <p className="text-white font-bold text-xl uppercase tracking-wider mt-1">{project.type}</p>
+              </div>
+              <div className="w-full h-[1px] bg-white/5" />
+              <div>
+                <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Status</span>
+                <div className="flex items-center gap-2 mt-1">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+                  <p className="text-emerald-400 font-bold text-xl uppercase tracking-wider">Live</p>
+                </div>
+              </div>
+              <div className="w-full h-[1px] bg-white/5" />
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="group/link flex items-center gap-2 text-emerald-500 font-bold text-xs uppercase tracking-[0.2em] transition-all hover:translate-x-1">
+                Launch App <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+              </a>
+            </div>
+          </div>
+
+          {/* Card: Performance */}
+          <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/20 transition-all duration-500">
+            <div className="absolute top-0 left-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+              <Zap className="w-6 h-6 text-emerald-500" />
+            </div>
+            <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "'Permanent Marker', cursive" }}>Performance</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Optimized for speed and fluid interactions, ensuring a seamless user experience across all devices.
+            </p>
+          </div>
+
+          {/* Card: Experience */}
+          <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden hover:border-blue-500/20 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+              <Layout className="w-6 h-6 text-blue-500" />
+            </div>
+            <h3 className="text-xl font-bold mb-3" style={{ fontFamily: "'Permanent Marker', cursive" }}>Experience</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Crafted UI hierarchy and intuitive flow to minimize cognitive load and maximize utility.
+            </p>
+          </div>
+
+          {/* Card: Tech Stack */}
+          <div className="group relative bg-white/[0.03] backdrop-blur-md border border-white/[0.06] rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/20 transition-all duration-500">
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+                <Code2 className="w-4 h-4 text-emerald-500" />
+              </div>
+              <h3 className="text-lg font-black uppercase tracking-widest text-emerald-500" style={{ fontFamily: "'Permanent Marker', cursive" }}>Stack</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack?.map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-bold text-gray-300 border border-white/[0.08] hover:border-emerald-500/40 hover:text-emerald-400 transition-all duration-300 uppercase tracking-widest cursor-default">
+                  {tech}
+                </span>
+              )) || ['React', 'Tailwind', 'PostgreSQL'].map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-bold text-gray-300 border border-white/[0.08] uppercase tracking-widest">{tech}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* SECTION 3: VISUAL GALLERY */}
+      {/* ═══════════════════════════════════════════════════ */}
+      {project.slides?.length > 1 && (
+        <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 pb-16">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="w-10 h-[1px] bg-emerald-500/30" />
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-500">Gallery</span>
+            <div className="flex-1 h-[1px] bg-white/5" />
+            <span className="text-[10px] font-mono text-gray-600">{currentSlide + 1} / {project.slides.length}</span>
+          </div>
+
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-[3rem] blur-2xl opacity-10 group-hover:opacity-20 transition-opacity" />
-            <div className="relative rounded-[3rem] overflow-hidden border border-white/10 bg-[#070707] shadow-2xl">
-              <img 
-                src={project.slides[currentSlide]} 
-                alt={project.name} 
-                className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-1000" 
-              />
-              
-              {project.slides?.length > 1 && (
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-6 pointer-events-none">
-                  <button onClick={prevSlide} className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-emerald-500 hover:text-black transition-all pointer-events-auto shadow-2xl group/btn">
-                    <ArrowRight className="w-5 h-5 rotate-180 transition-transform group-hover/btn:-translate-x-1" />
-                  </button>
-                  <button onClick={nextSlide} className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-emerald-500 hover:text-black transition-all pointer-events-auto shadow-2xl group/btn">
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" />
-                  </button>
-                </div>
-              )}
+            {/* Glow */}
+            <div className="absolute -inset-3 bg-emerald-500/10 rounded-[2.5rem] blur-3xl opacity-0 group-hover:opacity-60 transition-opacity duration-700" />
 
-              {project.slides?.length > 1 && (
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
-                  {project.slides.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentSlide(i)}
-                      className={`h-1.5 rounded-full transition-all duration-500 ${currentSlide === i ? 'w-8 bg-emerald-500 shadow-[0_0_10px_#10b981]' : 'w-2 bg-white/20 hover:bg-white/40'}`}
-                    />
-                  ))}
-                </div>
-              )}
+            {/* Image Frame */}
+            <div className="relative rounded-[2rem] overflow-hidden border border-white/[0.08] bg-black/50 shadow-2xl">
+              <div className="aspect-[16/9] overflow-hidden relative">
+                <img
+                  src={project.slides[currentSlide]}
+                  alt={`${project.name} - Screenshot ${currentSlide + 1}`}
+                  className={`w-full h-full object-cover transition-all duration-700 ${isImageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                  onLoad={() => setIsImageLoaded(true)}
+                />
+                {/* Subtle vignette */}
+                <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.3)] pointer-events-none" />
+              </div>
 
-              <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
-                <div className="flex flex-col gap-2 p-6 backdrop-blur-md bg-black/40 border border-white/10 rounded-2xl">
-                  <span className="text-[8px] font-mono text-emerald-500/50 uppercase">Visual_Reference</span>
-                  <span className="text-xs font-bold text-white uppercase tracking-widest">Main Product Interface</span>
-                </div>
-                <div className="hidden sm:flex flex-col gap-2 p-6 backdrop-blur-md bg-black/40 border border-white/10 rounded-2xl">
-                  <span className="text-[8px] font-mono text-emerald-500/50 uppercase">Scan_Complete</span>
-                  <span className="text-xs font-bold text-white uppercase tracking-widest">Resolution 1920x1080</span>
-                </div>
+              {/* Controls */}
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 sm:px-6 pointer-events-none">
+                <button onClick={prevSlide} className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-2xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-emerald-500 hover:text-black hover:border-emerald-500 transition-all duration-300 pointer-events-auto shadow-2xl">
+                  <ArrowRight className="w-5 h-5 rotate-180" />
+                </button>
+                <button onClick={nextSlide} className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-2xl border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-emerald-500 hover:text-black hover:border-emerald-500 transition-all duration-300 pointer-events-auto shadow-2xl">
+                  <ArrowRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
-          </div>
 
-          <div className="grid lg:grid-cols-3 gap-16">
-            <div className="lg:col-span-2 space-y-10">
-              <div className="space-y-4">
-                <h3 className="text-3xl font-black tracking-tight" style={{ fontFamily: "'Permanent Marker', cursive" }}>Abstract</h3>
-                <div className="h-0.5 w-12 bg-emerald-500" />
-              </div>
-              <p className="text-xl text-gray-400 leading-relaxed font-light">{project.fullDescription || project.description}</p>
-              <div className="grid sm:grid-cols-2 gap-6 pt-8">
-                <div className="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center"><Zap className="w-5 h-5 text-emerald-500" /></div>
-                  <h4 className="font-bold text-lg" style={{ fontFamily: "'Permanent Marker', cursive" }}>Performance</h4>
-                  <p className="text-sm text-gray-500 leading-relaxed">Engineered for zero-latency interactions and fluid momentum-based scrolling.</p>
-                </div>
-                <div className="p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] space-y-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center"><Layout className="w-5 h-5 text-blue-500" /></div>
-                  <h4 className="font-bold text-lg" style={{ fontFamily: "'Permanent Marker', cursive" }}>Intuition</h4>
-                  <p className="text-sm text-gray-500 leading-relaxed">UI hierarchy optimized for human interaction and cognitive clarity.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="space-y-12">
-              <div className="p-10 bg-white/[0.03] border border-white/10 rounded-[2.5rem] space-y-8">
-                <h3 className="text-xl font-black uppercase tracking-widest text-emerald-500" style={{ fontFamily: "'Permanent Marker', cursive" }}>Tech Stack</h3>
-                <div className="flex flex-wrap gap-2">
-                  {['React', 'Tailwind', 'PostgreSQL', 'Framer Motion', 'Lenis'].map((tech) => (
-                    <span key={tech} className="px-4 py-2 bg-white/5 rounded-xl text-[10px] font-bold text-gray-400 border border-white/5">{tech}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-10 border border-white/5 rounded-[2.5rem] relative overflow-hidden group">
-                <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative z-10 space-y-4">
-                  <span className="text-[10px] font-mono text-emerald-500/50 uppercase">Ready to scale?</span>
-                  <h3 className="text-2xl font-black tracking-tight" style={{ fontFamily: "'Permanent Marker', cursive" }}>Let's Build It.</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed pb-4">Interested in building something similar or pushing this technology further?</p>
-                  <a href="mailto:emmanuelnnanna.en@gmail.com" className="inline-flex items-center gap-2 text-emerald-500 font-bold text-xs uppercase tracking-[0.2em] transform transition-all hover:translate-x-2">Initialize Chat <ArrowRight className="w-4 h-4" /></a>
-                </div>
-              </div>
+            {/* Dot Indicators */}
+            <div className="flex justify-center gap-2 mt-6">
+              {project.slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setIsImageLoaded(false); setCurrentSlide(i); }}
+                  className={`rounded-full transition-all duration-500 ${currentSlide === i ? 'w-8 h-2 bg-emerald-500 shadow-[0_0_12px_#10b981]' : 'w-2 h-2 bg-white/15 hover:bg-white/30'}`}
+                />
+              ))}
             </div>
           </div>
         </div>
+      )}
 
-        {/* Decorative Watermark */}
-        <div className="fixed bottom-10 right-10 pointer-events-none opacity-5 vertical-text">
-          <span className="text-sm font-black tracking-[1em] text-white">SYSTEM_ARCHIVE_2025</span>
+
+      {/* ═══════════════════════════════════════════════════ */}
+      {/* FOOTER WATERMARK */}
+      {/* ═══════════════════════════════════════════════════ */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="py-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span className="text-[9px] font-black tracking-[0.5em] text-white/10 uppercase">EN_PORTFOLIO_2025</span>
+          <a href={project.link} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-gray-600 hover:text-emerald-500 transition-colors">
+            <span className="text-[9px] font-bold uppercase tracking-[0.3em]">Visit Live</span>
+            <ExternalLink className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </div>
       </div>
     </div>
@@ -253,7 +365,7 @@ const AllProjectsPage = ({ allProjects, setCurrentPage, setSelectedProject }) =>
           <ArrowRight className="w-5 h-5 rotate-180" /> Back to Home
         </button>
         <div className="text-center mb-24">
-          <h1 className="text-7xl font-black mb-6" style={{ fontFamily: "'Permanent Marker', cursive" }}>My <span className="text-gradient-emerald">Projects</span></h1>
+          <h1 className="text-[60px] sm:text-[120px] lg:text-[150px] font-black tracking-tighter leading-[0.8] uppercase opacity-90 text-white select-none text-center mb-16" style={{ fontFamily: "'Permanent Marker', cursive" }}>All <span className="text-gradient-emerald">Projects</span></h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">A collection of my recent apps, internal tools, and creative experiments.</p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -369,7 +481,8 @@ const Portfolio = () => {
       slides: ["/Project Banner/LevelUp.png", "/Project Banner/LevelUp-screens.png"],
       color: "from-purple-500 to-pink-500",
       type: "mobile app",
-      link: "https://play.google.com/store/apps/details?id=com.orelithdev.levelup"
+      link: "https://play.google.com/store/apps/details?id=com.orelith.sololeveling",
+      techStack: ["Flutter", "Figma", "Firebase"]
     },
     {
       id: 'learnitin',
@@ -381,7 +494,8 @@ const Portfolio = () => {
       slides: ["/Project Banner/Learnitin.png"],
       color: "from-emerald-500 to-teal-500",
       type: "mobile app",
-      link: "https://play.google.com/store/apps/details?id=com.orelithdev.learnitan"
+      link: "https://www.learnitin.online",
+      techStack: ["Flutter", "FastAPI", "Google Gemini", "Google Cloud"]
     },
     {
       id: 'deadlineheat',
@@ -393,7 +507,8 @@ const Portfolio = () => {
       slides: ["/Project Banner/deadline.png", "/Project Banner/deadline-screens.png"],
       color: "from-orange-500 to-red-500",
       type: "mobile app",
-      link: "https://play.google.com/store/apps/details?id=com.blockrlabs.deadlineheat"
+      link: "https://play.google.com/store/apps/details?id=com.blockrlabs.deaadlineheat",
+      techStack: ["Flutter", "Figma"]
     }
   ];
 
@@ -409,7 +524,8 @@ const Portfolio = () => {
       slides: ["/Project Banner/Gritloop.png", "/Project Banner/gritloop-screens.png"],
       color: "from-green-500 to-emerald-500",
       type: "mobile app",
-      link: "https://play.google.com/store/apps/details?id=com.orelithdev.gritloop"
+      link: "https://play.google.com/store/apps/details?id=com.blockrlabs.gritloop",
+      techStack: ["Flutter"]
     },
     {
       id: 'lifeplanner',
@@ -421,7 +537,8 @@ const Portfolio = () => {
       slides: ["/Project Banner/lifeplanner.png", "/Project Banner/lifeplanner-screens.png"],
       color: "from-blue-500 to-indigo-500",
       type: "mobile app",
-      link: "https://play.google.com/store/apps/details?id=com.orelithdev.lifeplanner"
+      link: "https://play.google.com/store/apps/details?id=com.orelithdev.blockr",
+      techStack: ["Flutter"]
     }
   ];
 
@@ -459,7 +576,7 @@ const Portfolio = () => {
   if (currentPage === 'projects') {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden" style={{ fontFamily: "'Urbanist', sans-serif" }}>
-        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
         <AnimatedBackground mousePosition={mousePosition} />
         <Navigation navItems={navItems} activeSection={activeSection} scrollTo={scrollTo} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <AllProjectsPage allProjects={allProjects} setCurrentPage={setCurrentPage} setSelectedProject={setSelectedProject} />
@@ -470,7 +587,7 @@ const Portfolio = () => {
   if (currentPage === 'project' && selectedProject) {
     return (
       <div className="min-h-screen bg-[#0a0a0a] text-white overflow-hidden" style={{ fontFamily: "'Urbanist', sans-serif" }}>
-        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Permanent+Marker&family=Caveat:wght@400;700&display=swap" rel="stylesheet" />
         <AnimatedBackground mousePosition={mousePosition} />
         <Navigation navItems={navItems} activeSection={activeSection} scrollTo={scrollTo} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <ProjectDetailPage project={selectedProject} setSelectedProject={setSelectedProject} setCurrentPage={setCurrentPage} />
@@ -786,6 +903,19 @@ const Portfolio = () => {
                 >
                   <Mail className="w-5 h-5" /> 
                   <span className="text-sm sm:text-base whitespace-nowrap">Start a Conversation</span>
+                </a>
+                <a
+                  href="https://wa.me/2349121394690"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative bg-white/[0.05] border border-white/10 text-white px-6 sm:px-12 py-4 sm:py-5 rounded-2xl font-bold hover:border-[#25D366]/50 hover:bg-[#25D366]/10 transition-all duration-300 flex items-center justify-center gap-3 transform hover:scale-105 overflow-hidden"
+                >
+                  {/* WhatsApp glow on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#25D366]/0 via-[#25D366]/5 to-[#25D366]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <svg className="w-5 h-5 text-[#25D366] relative z-10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  <span className="text-sm sm:text-base whitespace-nowrap relative z-10 group-hover:text-[#25D366] transition-colors">WhatsApp Me</span>
                 </a>
               </div>
             </div>
