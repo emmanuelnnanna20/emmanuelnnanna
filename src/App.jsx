@@ -73,7 +73,7 @@ const Navigation = ({ navItems, activeSection, scrollTo, isMenuOpen, setIsMenuOp
               </button>
             ))}
             <div className="w-[1px] h-4 bg-white/10 mx-2" />
-            <a href="https://drive.google.com/file/d/19yVtCb10O6bC4Ar1dQMqNtqpvWJl08Te/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-emerald-400 transition-colors">
+            <a href="https://drive.google.com/file/d/1uvv8IPmNbXT3ujaMn0ejOzWmhWChXrDr/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="p-2 text-gray-400 hover:text-emerald-400 transition-colors">
               <FileText className="w-5 h-5" />
             </a>
           </div>
@@ -105,7 +105,7 @@ const Navigation = ({ navItems, activeSection, scrollTo, isMenuOpen, setIsMenuOp
             ))}
           </div>
           <div className="pt-8 flex flex-col items-center">
-            <a href="https://drive.google.com/file/d/19yVtCb10O6bC4Ar1dQMqNtqpvWJl08Te/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="px-8 py-3.5 bg-emerald-500 text-black rounded-xl font-bold text-[10px] uppercase tracking-widest shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-transform active:scale-95">See Resume</a>
+            <a href="https://drive.google.com/file/d/1uvv8IPmNbXT3ujaMn0ejOzWmhWChXrDr/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="px-8 py-3.5 bg-emerald-500 text-black rounded-xl font-bold text-[10px] uppercase tracking-widest shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-transform active:scale-95">See Resume</a>
           </div>
         </div>
       </div>
@@ -796,7 +796,7 @@ const Portfolio = () => {
           <div className="mt-12 lg:mt-16 group relative z-30">
             <div className="absolute -inset-1 bg-emerald-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity" />
             <a
-              href="https://drive.google.com/file/d/19yVtCb10O6bC4Ar1dQMqNtqpvWJl08Te/view?usp=drive_link"
+              href="https://drive.google.com/file/d/1uvv8IPmNbXT3ujaMn0ejOzWmhWChXrDr/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="relative px-8 lg:px-12 py-4 lg:py-5 bg-[#030303] border border-white/10 rounded-2xl flex items-center gap-4 hover:border-emerald-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl"
